@@ -1,16 +1,14 @@
 package com.example.laba1maintask.conrollers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloWorld {
 
-    @GetMapping("/")
-    @ResponseBody
+    @RequestMapping("/hello")
     public String helloWorld() {
-        return "Hello, World!";
+        return "hello.html";
     }
 
 }
