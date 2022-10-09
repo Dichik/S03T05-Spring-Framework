@@ -1,9 +1,16 @@
 package com.example.laba2.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "petition")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "petitions")
 public class Petition {
 
     @Id

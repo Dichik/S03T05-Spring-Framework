@@ -1,14 +1,22 @@
 package com.example.laba2.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "users")
 public class User {
     // TODO only registered users can vote (easy registration maybe with mail confirmation)
     // TODO confirmation by clicing url -> interesting to design that???
     // TODO Spring Security is ok for that? would be a good practice to test it on an easy application
-    @Id
+    @Id @Column(unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String email;

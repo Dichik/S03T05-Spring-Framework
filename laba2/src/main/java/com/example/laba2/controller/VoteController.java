@@ -15,22 +15,25 @@ import java.util.List;
 @RequestMapping("/vote")
 public class VoteController {
 
-    @Autowired
-    private VoteService voteService;
+    private final VoteService voteService;
+
+    public VoteController(VoteService voteService) {
+        this.voteService = voteService;
+    }
 
     @GetMapping
     public List<Vote> getAll() {
-        return this.voteService.getAll();
+        return null;
     }
 
     @GetMapping("/id")
     public Vote getById(@RequestParam Long id) {
-        return this.voteService.getById(id);
+        return null;
     }
 
     @PostMapping
     public Vote vote(@RequestParam Long userId, @RequestParam Long petitionId) {
-        return this.voteService.vote(userId, petitionId);
+        return null;
     }
 
 }

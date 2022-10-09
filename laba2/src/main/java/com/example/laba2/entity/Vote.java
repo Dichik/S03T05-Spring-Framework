@@ -1,22 +1,24 @@
 package com.example.laba2.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "votes")
 public class Vote {
 
-    @Id
+    @Id @Column(unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private Long userId;
 
     private Long petitionId;
-
-    public Vote(Long userId, Long petitionId) {
-        this.userId = userId;
-        this.petitionId = petitionId;
-    }
 
 }
