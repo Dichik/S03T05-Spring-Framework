@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PetitionService {
+public class PetitionService implements IPetitionService {
 
     @Autowired
     private PetitionRepository petitionRepository;
