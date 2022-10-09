@@ -12,25 +12,25 @@ import java.util.Optional;
 @AllArgsConstructor
 public class VoteService implements IVoteService {
 
-//    private final VoteRepository voteRepository;
-//
-//    public Vote vote(Long userId, Long petitionId) {
-//        Vote vote = new Vote(userId, petitionId);
-//        if (voteRepository.findByUserIdAndPetitionId(userId, petitionId).isPresent()) {
-//            System.out.println("Throw corresponded exception");
-//            return null;
-//        }
-//        return this.voteRepository.save(vote); // TODO autoincrement for db
-//    }
-//
-//    public List<Vote> getAll() {
-//        return (List<Vote>) this.voteRepository.findAll();
-//    }
-//
-//    public Vote getById(Long id) {
-//        // TODO check if exist
-//        Optional<Vote> vote = this.voteRepository.findById(id);
-//        // TODO throw corresponded error
-//        return vote.orElse(null);
-//    }
+    private final VoteRepository voteRepository;
+
+    public Vote vote(Long userId, Long petitionId) {
+        Vote vote = new Vote(userId, petitionId);
+        if (voteRepository.findByUserIdAndPetitionId(userId, petitionId).isPresent()) {
+            System.out.println("Throw corresponded exception");
+            return null;
+        }
+        return this.voteRepository.save(vote); // TODO autoincrement for db
+    }
+
+    public List<Vote> getAll() {
+        return (List<Vote>) this.voteRepository.findAll();
+    }
+
+    public Vote getById(Long id) {
+        // TODO check if exist
+        Optional<Vote> vote = this.voteRepository.findById(id);
+        // TODO throw corresponded error
+        return vote.orElse(null);
+    }
 }

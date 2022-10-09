@@ -21,4 +21,8 @@ public class Vote {
 
     private Long petitionId;
 
+    public Vote(Long userId, Long petitionId) {
+        this.userId = userId;
+        this.petitionId = petitionId;
+    }
 }
