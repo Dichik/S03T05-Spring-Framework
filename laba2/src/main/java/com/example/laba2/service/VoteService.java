@@ -24,7 +24,7 @@ public class VoteService implements IVoteService {
     }
 
     public List<Vote> getAll() {
-        return (List<Vote>) this.voteRepository.findAll();
+        return this.voteRepository.findAll();
     }
 
     public Vote getById(Long id) {
