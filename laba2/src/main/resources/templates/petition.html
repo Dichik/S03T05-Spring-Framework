@@ -13,12 +13,15 @@
         <tr>
             <th>Id</th>
             <th>Description</th>
+            <th>Button</th>
         </tr>
 
         <tr th:each="petition : ${petitions}">
             <td th:text="${petition.id}">Id</td>
             <td th:text="${petition.description}">Name</td>
+            <td><button><a th:href="@{/vote(petition_id=${petition.id})}">Details</a></button></td>
         </tr>
+
     </table>
 
 </body>
