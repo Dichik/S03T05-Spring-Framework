@@ -1,4 +1,9 @@
 package com.example.laba2.entity.dto;
 
 public class VoteDto {
+
+    private Long userId;
+
+    private Long petitionId;
+
 }
