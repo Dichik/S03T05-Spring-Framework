@@ -2,6 +2,7 @@ package com.example.laba2.service;
 
 import com.example.laba2.entity.Petition;
 import com.example.laba2.entity.dto.PetitionDto;
+import com.example.laba2.exception.PetitionNotFoundException;
 import com.example.laba2.repository.PetitionRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -19,11 +20,12 @@ public class PetitionService implements IPetitionService {
 
     @Override
     public List<Petition> findAll() {
-        List<Petition> petitions = this.petitionRepository.findAll();
-        if (petitions == null) {
-            return List.of();
-        }
-        return petitions;
+        return this.petitionRepository.findAll();
+    }
+
+    @Override
+    public Optional<Petition> findById(Long id) {
+        return this.petitionRepository.findById(id);
     }
 
     @Override
@@ -32,10 +34,10 @@ public class PetitionService implements IPetitionService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Long id) throws PetitionNotFoundException {
         Petition petition = this.petitionRepository.findById(id).orElse(null);
         if (petition == null) {
-            System.out.println("Can't delete petition with " + id + " id");
+            throw new PetitionNotFoundException("Can't delete petition with " + id + " id");
         }
         this.petitionRepository.delete(petition);
     }

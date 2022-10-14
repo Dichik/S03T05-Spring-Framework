@@ -30,6 +30,13 @@ public class PetitionController {
         return "petition";
     }
 
+    @GetMapping("/{id:[\\d]+}")
+    public ResponseEntity<PetitionDto> getById(@PathVariable Long id) {
+        return this.petitionService.findById(id)
+                .map(petition -> ResponseEntity.ok(this.modelMapper.map(petition, PetitionDto.class)))
+                .orElseThrow(() -> new RuntimeException("Error..."));
+    }
+
     @PostMapping
     public void create(@Valid @RequestBody Petition petition) {
         this.petitionService.create(petition);
@@ -43,7 +50,7 @@ public class PetitionController {
     @PutMapping("/{id:[\\d]+}")
     public ResponseEntity<PetitionDto> update(@PathVariable Long id, @Valid @RequestBody PetitionDto petitionDto) {
         return this.petitionService.update(id, petitionDto)
-                .map(petition -> ResponseEntity.ok(modelMapper.map(petition, PetitionDto.class)))
+                .map(petition -> ResponseEntity.ok(this.modelMapper.map(petition, PetitionDto.class)))
                 .orElseThrow(() -> new RuntimeException("Error...")); // fix that
     }
 
