@@ -33,4 +33,10 @@ public class VoteService implements IVoteService {
         // TODO throw corresponded error
         return vote.orElse(null);
     }
+
+    @Override
+    public Long getNumberOfVotesByPetitionId(Long petitionId) {
+        return this.voteRepository.countByPetitionId(petitionId);
+    }
+
 }

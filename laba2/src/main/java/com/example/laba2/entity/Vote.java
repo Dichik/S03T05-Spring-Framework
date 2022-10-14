@@ -13,16 +13,9 @@ import javax.persistence.*;
 @Table(name = "votes")
 public class Vote {
 
-    @Id @Column(unique = true)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    @Id // TODO check out how to create double key and make it foreign
     private Long userId;
 
     private Long petitionId;
 
-    public Vote(Long userId, Long petitionId) {
-        this.userId = userId;
-        this.petitionId = petitionId;
-    }
 }

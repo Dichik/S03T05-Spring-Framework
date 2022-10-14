@@ -10,4 +10,5 @@ public class Laba2Application {
         SpringApplication.run(Laba2Application.class, args);
     }
 
+    // TODO how we should find out when petition collected required amount of votes
 }

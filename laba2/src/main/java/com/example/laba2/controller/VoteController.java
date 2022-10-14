@@ -27,18 +27,18 @@ public class VoteController {
         return "vote";
     }
 
-    @GetMapping("/id")
-    public Vote getById(@RequestParam Long id) {
-        return null;
+    @GetMapping("/{petitionId:[\\d]+}") // TODO improve parameter for petition_id
+    public Long getNumberOfVotes(@RequestParam Long petitionId) {
+        return this.voteService.getNumberOfVotesByPetitionId(petitionId);
     }
 
     @PostMapping
     public Vote vote(@RequestParam Long userId, @RequestParam Long petitionId) {
-        return null;
+        return this.voteService.vote(userId, petitionId);
     }
 
     @DeleteMapping("/{id:[\\d]+}")
-    public void vote(@PathVariable Long id) {
+    public void removeVote(@PathVariable Long id) {
 
     }
 
