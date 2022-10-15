@@ -1,6 +1,6 @@
 package com.example.laba2.controller;
 
-import com.example.laba2.entity.Petition;
+import com.example.laba2.entity.PetitionEntity;
 import com.example.laba2.entity.dto.PetitionDto;
 import com.example.laba2.exception.PetitionNotFoundException;
 import com.example.laba2.service.PetitionService;
@@ -26,7 +26,7 @@ public class PetitionController {
 
     @GetMapping
     public String getAll(Model model) {
-        List<Petition> petitions = this.petitionService.findAll();
+        List<PetitionEntity> petitions = this.petitionService.findAll();
 
         log.info("List of petitions were getten. Total size: " + petitions.size());
 
@@ -37,16 +37,16 @@ public class PetitionController {
     @GetMapping("/{id:[\\d]+}")
     public ResponseEntity<PetitionDto> getById(@PathVariable Long id) {
         return this.petitionService.findById(id)
-                .map(petition -> {
+                .map(petitionEntity -> {
                     log.info("Petition with " + id + " id was found.");
-                    return ResponseEntity.ok(this.modelMapper.map(petition, PetitionDto.class));
+                    return ResponseEntity.ok(this.modelMapper.map(petitionEntity, PetitionDto.class));
                 })
                 .orElseThrow(() -> new RuntimeException("Error..."));
     }
 
     @PostMapping
     public void create(@Valid @RequestBody PetitionDto petitionDto) {
-        Petition petition = this.modelMapper.map(petitionDto, Petition.class);
+        PetitionEntity petition = this.modelMapper.map(petitionDto, PetitionEntity.class);
         this.petitionService.create(petition); // TODO improve PostMapping method
     }
 
@@ -65,7 +65,7 @@ public class PetitionController {
     @PutMapping("/{id:[\\d]+}")
     public ResponseEntity<PetitionDto> update(@PathVariable Long id, @Valid @RequestBody PetitionDto petitionDto) {
         return this.petitionService.update(id, petitionDto)
-                .map(petition -> ResponseEntity.ok(this.modelMapper.map(petition, PetitionDto.class)))
+                .map(petitionEntity -> ResponseEntity.ok(this.modelMapper.map(petitionEntity, PetitionDto.class)))
                 .orElseThrow(() -> new RuntimeException("Error...")); // fix that
     }
 

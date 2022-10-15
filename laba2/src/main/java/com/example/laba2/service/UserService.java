@@ -1,6 +1,6 @@
 package com.example.laba2.service;
 
-import com.example.laba2.entity.User;
+import com.example.laba2.entity.UserEntity;
 import com.example.laba2.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -17,12 +17,12 @@ public class UserService implements IUserService {
     private final ModelMapper modelMapper;
 
     @Override
-    public Optional<User> getUserById(Long id) {
+    public Optional<UserEntity> getUserById(Long id) {
         return this.userRepository.findById(id);
     }
 
     @Override
-    public List<User> getUsers() {
+    public List<UserEntity> getUsers() {
         return this.userRepository.findAll();
     }
 

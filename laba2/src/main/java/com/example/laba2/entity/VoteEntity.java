@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "votes")
-public class Vote {
+public class VoteEntity {
 
     @Id // TODO check out how to create double key and make it foreign
     private Long userId;

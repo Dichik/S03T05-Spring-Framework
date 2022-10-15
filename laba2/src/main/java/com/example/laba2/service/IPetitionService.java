@@ -1,6 +1,6 @@
 package com.example.laba2.service;
 
-import com.example.laba2.entity.Petition;
+import com.example.laba2.entity.PetitionEntity;
 import com.example.laba2.entity.dto.PetitionDto;
 import com.example.laba2.exception.PetitionNotFoundException;
 
@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IPetitionService {
-    List<Petition> findAll();
+    List<PetitionEntity> findAll();
 
-    Optional<Petition> findById(Long id);
+    Optional<PetitionEntity> findById(Long id);
 
-    void create(Petition petition);
+    void create(PetitionEntity petitionEntity);
 
     void delete(Long id) throws PetitionNotFoundException;
 
-    Optional<Petition> update(Long id, PetitionDto petitionDto);
+    Optional<PetitionEntity> update(Long id, PetitionDto petitionDto);
 }

@@ -1,6 +1,6 @@
 package com.example.laba2.controller;
 
-import com.example.laba2.entity.Vote;
+import com.example.laba2.entity.VoteEntity;
 import com.example.laba2.service.VoteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +20,7 @@ public class VoteController {
 
     @GetMapping
     public String getAll(@RequestParam Long petitionId, Model model) {
-        List<Vote> votes = this.voteService.getAll(); // should get by petition id
+        List<VoteEntity> votes = this.voteService.getAll(); // should get by petition id
 
         model.addAttribute("votes", votes);
 
@@ -33,7 +33,7 @@ public class VoteController {
     }
 
     @PostMapping
-    public Vote vote(@RequestParam Long userId, @RequestParam Long petitionId) {
+    public VoteEntity vote(@RequestParam Long userId, @RequestParam Long petitionId) {
         return this.voteService.vote(userId, petitionId);
     }
 

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
-public class User {
+public class UserEntity {
     // TODO only registered users can vote (easy registration maybe with mail confirmation)
     // TODO confirmation by clicing url -> interesting to design that???
     // TODO Spring Security is ok for that? would be a good practice to test it on an easy application

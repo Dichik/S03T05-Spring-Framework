@@ -1,6 +1,6 @@
 package com.example.laba2.service;
 
-import com.example.laba2.entity.Petition;
+import com.example.laba2.entity.PetitionEntity;
 import com.example.laba2.entity.dto.PetitionDto;
 import com.example.laba2.exception.PetitionNotFoundException;
 import com.example.laba2.repository.PetitionRepository;
@@ -21,23 +21,23 @@ public class PetitionService implements IPetitionService {
     private final PetitionRepository petitionRepository;
 
     @Override
-    public List<Petition> findAll() {
+    public List<PetitionEntity> findAll() {
         return this.petitionRepository.findAll();
     }
 
     @Override
-    public Optional<Petition> findById(Long id) {
+    public Optional<PetitionEntity> findById(Long id) {
         return this.petitionRepository.findById(id);
     }
 
     @Override
-    public void create(Petition petition) {
-        this.petitionRepository.save(petition);
+    public void create(PetitionEntity petitionEntity) {
+        this.petitionRepository.save(petitionEntity);
     }
 
     @Override
     public void delete(Long id) throws PetitionNotFoundException {
-        Petition petition = this.petitionRepository.findById(id).orElse(null);
+        PetitionEntity petition = this.petitionRepository.findById(id).orElse(null);
         if (petition == null) {
             log.error("Petition entity with " + id + " id was not found.");
             throw new PetitionNotFoundException("Can't delete petition with " + id + " id");
@@ -46,10 +46,10 @@ public class PetitionService implements IPetitionService {
     }
 
     @Override
-    public Optional<Petition> update(Long id, PetitionDto petitionDto) {
+    public Optional<PetitionEntity> update(Long id, PetitionDto petitionDto) {
         return this.petitionRepository.findById(id)
             .map(source -> {
-                Petition petition = modelMapper.map(petitionDto, Petition.class);
+                PetitionEntity petition = modelMapper.map(petitionDto, PetitionEntity.class);
                 petition.setId(id);
                 return this.petitionRepository.save(petition);
             });

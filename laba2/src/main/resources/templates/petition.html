@@ -16,10 +16,10 @@
             <th>Button</th>
         </tr>
 
-        <tr th:each="petition : ${petitions}">
-            <td th:text="${petition.id}">Id</td>
-            <td th:text="${petition.description}">Name</td>
-            <td><button><a th:href="@{/vote(petition_id=${petition.id})}">Details</a></button></td>
+        <tr th:each="petitionEntity : ${petitions}">
+            <td th:text="${petitionEntity.id}">Id</td>
+            <td th:text="${petitionEntity.description}">Name</td>
+            <td><button><a th:href="@{/vote(petition_id=${petitionEntity.id})}">Details</a></button></td>
         </tr>
 
     </table>
