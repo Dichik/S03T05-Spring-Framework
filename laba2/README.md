@@ -4,7 +4,8 @@
     - Inversion of Control (IoC);
     - IoC container;
     - Dependency Injection (DI);
-    - Dependency inversion principle.
+    - Dependency inversion principle. (+ repeat SOLID principles) 
+
 
 
 
@@ -38,4 +39,9 @@
 
 ### 9. Чи може бін мати кілька конструкторів, помічених анотацією @Autowired?
 
+
+
+---------
+
+TODO: get deep knowledge in that
 
