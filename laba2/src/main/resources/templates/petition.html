@@ -19,7 +19,7 @@
         <tr th:each="petitionEntity : ${petitions}">
             <td th:text="${petitionEntity.id}">Id</td>
             <td th:text="${petitionEntity.description}">Name</td>
-            <td><button><a th:href="@{/vote(petition_id=${petitionEntity.id})}">Details</a></button></td>
+            <td><button><a th:href="@{/petition/} + ${petitionEntity.id}">Details</a></button></td>
         </tr>
 
     </table>

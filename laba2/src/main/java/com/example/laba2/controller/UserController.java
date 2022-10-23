@@ -2,7 +2,6 @@ package com.example.laba2.controller;
 
 import com.example.laba2.entity.dto.UserDto;
 import com.example.laba2.service.UserService;
-import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

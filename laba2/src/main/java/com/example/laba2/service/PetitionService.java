@@ -4,7 +4,6 @@ import com.example.laba2.entity.PetitionEntity;
 import com.example.laba2.entity.dto.PetitionDto;
 import com.example.laba2.exception.PetitionNotFoundException;
 import com.example.laba2.repository.PetitionRepository;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
