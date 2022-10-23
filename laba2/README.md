@@ -32,7 +32,10 @@ The **@Bean** annotation **returns an object** that spring should register a
 
 ### 3. Чому слід уникати ін’єкцій залежностей напряму у поле біна?
 
-
+- Disallows immutable field declaration
+- Eases single responsibility principle violation
+- Tightly coupled with dependency injection container
+- Hidden dependencies
 
 ### 4. В яких випадках краще використовувати ін’єкції залежностей за допомогою конструкторів, а в яких за допомогою сетерів?
 
@@ -55,7 +58,8 @@ It can happen in Spring when using constructor injection.
 
 ### 7. Чи може бути в одному проекті кілька класів з реалізацією якогось інтерфейсу, якщо цей інтерфейс використовується для ін’єкції залежностей?
 
-
+Yes, we can have several implementations of the same interface, but for dependency injection we will need to specify which implementation we want to use.
+In this case we should use @Qualifier to specify the corresponded implementation.
 
 ### 8. Чи може бін мати кілька методів, помічених анотацією @Autowired?
 
