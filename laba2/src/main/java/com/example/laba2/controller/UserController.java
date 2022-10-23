@@ -4,6 +4,7 @@ import com.example.laba2.entity.dto.UserDto;
 import com.example.laba2.service.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
 @RequestMapping("/user")
 public class UserController {
 
-    private final ModelMapper modelMapper;
-    private final UserService userService;
+    @Autowired
+    private ModelMapper modelMapper;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/{id:[\\d]+}")
     public ResponseEntity<UserDto> getUserById(@PathVariable Long id) {

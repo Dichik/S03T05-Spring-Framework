@@ -7,6 +7,7 @@ import com.example.laba2.repository.PetitionRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,11 +15,10 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-@AllArgsConstructor
 public class PetitionService implements IPetitionService {
 
-    private final ModelMapper modelMapper;
-    private final PetitionRepository petitionRepository;
+    private ModelMapper modelMapper;
+    private PetitionRepository petitionRepository;
 
     @Override
     public List<PetitionEntity> findAll() {
@@ -55,4 +55,14 @@ public class PetitionService implements IPetitionService {
             });
     }
 
+    @Autowired
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
+
+    @Autowired
+    public void setPetitionRepository(PetitionRepository petitionRepository) {
+        this.petitionRepository = petitionRepository;
+    }
+    
 }

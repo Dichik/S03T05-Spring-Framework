@@ -2,6 +2,7 @@ package com.example.laba2.controller;
 
 import com.example.laba2.entity.VoteEntity;
 import com.example.laba2.service.VoteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ public class VoteController {
 
     private final VoteService voteService;
 
+    @Autowired
     public VoteController(VoteService voteService) {
         this.voteService = voteService;
     }
@@ -41,7 +43,5 @@ public class VoteController {
     public void removeVote(@PathVariable Long id) {
 
     }
-
-
 
 }

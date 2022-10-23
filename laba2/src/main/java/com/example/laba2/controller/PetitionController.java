@@ -7,6 +7,7 @@ import com.example.laba2.service.PetitionService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +18,17 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@AllArgsConstructor
 @RequestMapping("/petition")
 public class PetitionController {
 
     private final PetitionService petitionService;
     private final ModelMapper modelMapper;
+
+    @Autowired
+    public PetitionController(PetitionService petitionService, ModelMapper modelMapper) {
+        this.petitionService = petitionService;
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping
     public String getAll(Model model) {
