@@ -34,10 +34,10 @@ public class VoteController {
         return "vote";
     }
 
-    @RequestMapping(value = "/{petitionId:[\\d]+}", method = RequestMethod.GET)
-    public Long getNumberOfVotes(@PathVariable Long petitionId) {
-        return this.voteService.getNumberOfVotesByPetitionId(petitionId);
-    }
+    //@RequestMapping(value = "/{petitionId:[\\d]+}", method = RequestMethod.GET)
+    //public Long getNumberOfVotes(@PathVariable Long petitionId) {
+    //    return this.voteService.getNumberOfVotesByPetitionId(petitionId);
+    //}
 
     @PostMapping
     public ResponseEntity<VoteDto> vote(@RequestParam Long userId, @RequestParam Long petitionId) {

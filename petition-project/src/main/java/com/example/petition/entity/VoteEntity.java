@@ -13,7 +13,6 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "votes")
-@IdClass(VoteId.class)
 public class VoteEntity {
 
     @Id
