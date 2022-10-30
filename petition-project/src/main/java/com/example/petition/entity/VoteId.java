@@ -3,24 +3,16 @@ package com.example.petition.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.*;
-import java.time.Instant;
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import java.io.Serializable;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "votes")
-@IdClass(VoteId.class)
-public class VoteEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
-
+public class VoteId implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
@@ -28,9 +20,4 @@ public class VoteEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "petition_id", referencedColumnName = "id")
     private PetitionEntity petition;
-
-    @Column(insertable = false, updatable = false)
-    @LastModifiedDate
-    private Instant votedAt;
-
 }

@@ -1,42 +1,42 @@
 package com.example.petition.service;
 
 import com.example.petition.entity.VoteEntity;
+import com.example.petition.exception.VoteNotSavedException;
 import com.example.petition.repository.VoteRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class VoteService implements IVoteService {
 
     private final VoteRepository voteRepository;
 
-    public VoteEntity vote(Long userId, Long petitionId) {
-        VoteEntity vote = new VoteEntity(userId, petitionId);
-        if (voteRepository.findByUserIdAndPetitionId(userId, petitionId).isPresent()) {
-            System.out.println("Throw corresponded exception");
-            return null;
+    @Override
+    public VoteEntity vote(Long userId, Long petitionId) throws VoteNotSavedException {
+        VoteEntity vote = this.voteRepository.findByUserIdAndPetitionId(userId, petitionId)
+                .orElse(null);
+        if (vote == null) {
+            String message = String.format("Couldn't save vote of %s user for %s petition", userId, petitionId);
+            log.error(message);
+            throw new VoteNotSavedException(message);
         }
-        return this.voteRepository.save(vote); // TODO autoincrement for db
-    }
-
-    public List<VoteEntity> getAll() {
-        return this.voteRepository.findAll();
-    }
-
-    public VoteEntity getById(Long id) {
-        // TODO check if exist
-        Optional<VoteEntity> vote = this.voteRepository.findById(id);
-        // TODO throw corresponded error
-        return vote.orElse(null);
+        log.info(String.format("Saved vote of %s user for %s petition", userId, petitionId));
+        return this.voteRepository.save(vote);
     }
 
     @Override
     public Long getNumberOfVotesByPetitionId(Long petitionId) {
         return this.voteRepository.countByPetitionId(petitionId);
+    }
+
+    @Override
+    public List<VoteEntity> getByPetitionId(Long petitionId) {
+        return this.voteRepository.findAllByPetitionId(petitionId);
     }
 
 }

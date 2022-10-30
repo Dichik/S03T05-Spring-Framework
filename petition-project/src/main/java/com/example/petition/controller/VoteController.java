@@ -1,8 +1,13 @@
 package com.example.petition.controller;
 
 import com.example.petition.entity.VoteEntity;
+import com.example.petition.entity.dto.VoteDto;
+import com.example.petition.exception.VoteNotSavedException;
 import com.example.petition.service.VoteService;
+import org.apache.coyote.Response;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,29 +19,35 @@ import java.util.List;
 public class VoteController {
 
     private final VoteService voteService;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public VoteController(VoteService voteService) {
+    public VoteController(VoteService voteService, ModelMapper modelMapper) {
         this.voteService = voteService;
+        this.modelMapper = modelMapper;
     }
 
-    @GetMapping
-    public String getAll(@RequestParam Long petitionId, Model model) {
-        List<VoteEntity> votes = this.voteService.getAll(); // should get by petition id
-
+    @RequestMapping(value = "/{id:[\\d]+}", method = RequestMethod.GET)
+    public String getAllByPetitionId(@PathVariable Long id, Model model) {
+        List<VoteEntity> votes = this.voteService.getByPetitionId(id);
         model.addAttribute("votes", votes);
-
         return "vote";
     }
 
-    @GetMapping("/{petitionId:[\\d]+}") // TODO improve parameter for petition_id
-    public Long getNumberOfVotes(@RequestParam Long petitionId) {
+    @RequestMapping(value = "/{petitionId:[\\d]+}", method = RequestMethod.GET)
+    public Long getNumberOfVotes(@PathVariable Long petitionId) {
         return this.voteService.getNumberOfVotesByPetitionId(petitionId);
     }
 
     @PostMapping
-    public VoteEntity vote(@RequestParam Long userId, @RequestParam Long petitionId) {
-        return this.voteService.vote(userId, petitionId);
+    public ResponseEntity<VoteDto> vote(@RequestParam Long userId, @RequestParam Long petitionId) {
+        try {
+            return ResponseEntity.ok(
+                    this.modelMapper.map(this.voteService.vote(userId, petitionId), VoteDto.class)
+            );
+        } catch (VoteNotSavedException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id:[\\d]+}")
