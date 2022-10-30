@@ -4,7 +4,6 @@ import com.example.petition.entity.VoteEntity;
 import com.example.petition.entity.dto.VoteDto;
 import com.example.petition.exception.VoteNotSavedException;
 import com.example.petition.service.VoteService;
-import org.apache.coyote.Response;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,11 +33,6 @@ public class VoteController {
         return "vote";
     }
 
-    //@RequestMapping(value = "/{petitionId:[\\d]+}", method = RequestMethod.GET)
-    //public Long getNumberOfVotes(@PathVariable Long petitionId) {
-    //    return this.voteService.getNumberOfVotesByPetitionId(petitionId);
-    //}
-
     @PostMapping
     public ResponseEntity<VoteDto> vote(@RequestParam Long userId, @RequestParam Long petitionId) {
         try {
@@ -52,7 +46,7 @@ public class VoteController {
 
     @DeleteMapping("/{id:[\\d]+}")
     public void removeVote(@PathVariable Long id) {
-
+        // TODO implement method
     }
 
 }
