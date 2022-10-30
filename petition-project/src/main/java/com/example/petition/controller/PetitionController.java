@@ -29,7 +29,7 @@ public class PetitionController {
         this.modelMapper = modelMapper;
     }
 
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET)
     public String getAll(Model model) {
         List<PetitionEntity> petitions = this.petitionService.findAll();
 
@@ -39,14 +39,17 @@ public class PetitionController {
         return "petition";
     }
 
-    @GetMapping("/{id:[\\d]+}")
-    public ResponseEntity<PetitionDto> getById(@PathVariable Long id) {
-        return this.petitionService.findById(id)
+    @RequestMapping(value = "/{id:[\\d]+}", method = RequestMethod.GET)
+    public String getById(@PathVariable Long id, Model model) {
+        PetitionDto petition = this.petitionService.findById(id)
                 .map(petitionEntity -> {
                     log.info("Petition with " + id + " id was found.");
-                    return ResponseEntity.ok(this.modelMapper.map(petitionEntity, PetitionDto.class));
-                })
-                .orElseThrow(() -> new RuntimeException("Error..."));
+                    return this.modelMapper.map(petitionEntity, PetitionDto.class);
+                }).orElse(null);
+
+        model.addAttribute("petition", petition);
+
+        return "petition_page";
     }
 
     @PostMapping

@@ -5,28 +5,33 @@
     <title>Cities</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
     <h2 class="main-header-petitions">List of petitions</h2>
 
-    <table class="main-table-petitions">
-        <tr>
-            <th>Id</th>
-            <th>Description</th>
-            <th>Button</th>
-        </tr>
+    <div th:if="${petitions != null}">
+        <table class="main-table-petitions">
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Button</th>
+            </tr>
 
-        <tr th:each="petitionEntity : ${petitions}">
-            <td th:text="${petitionEntity.id}">Id</td>
-            <td th:text="${petitionEntity.description}">Name</td>
-            <td>
-                <button><a th:href="@{/petition/} + ${petitionEntity.id}">Details</a></button>
-            </td>
-        </tr>
+            <tr th:each="petitionEntity : ${petitions}">
+                <td th:text="${petitionEntity.id}">Id</td>
+                <td th:text="${petitionEntity.description}">Name</td>
+                <td th:if="${petitionEntity != null}">
+                    <button><a th:href="@{/petition/} + ${petitionEntity.id}">Details</a></button>
+                </td>
+            </tr>
 
-    </table>
+        </table>
+    </div>
+    <div th:if="${petitions == null}">
+        <h2>List of petitions is empty now</h2>
+    </div>
 
 </body>
 </html>
