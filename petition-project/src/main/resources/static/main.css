@@ -18,6 +18,7 @@
     outline: none;
     margin: 0 auto;
     justify-content: center;
+    font-family: "Arial";
 }
 
 a:link {
@@ -26,4 +27,38 @@ a:link {
 
 a:hover {
     text-decoration: none;
+}
+
+.main-header-petitions {
+    display: flex;
+    text-align: center;
+    margin-top: 100px;
+    font-size: 30px;
+    justify-content: center;
+
+    font-family: "Arial";
+}
+
+
+.main-table-petitions {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    padding: 20px;
+    font-size: 25px;
+
+    font-family: "Arial";
+}
+
+table {
+    border: 1px solid;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: rgba(214, 214, 214, 1);
 }

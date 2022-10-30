@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
     <title>Cities</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
 </head>
 
 <body>
-    <h2>List of petitions</h2>
+    <h2 class="main-header-petitions">List of petitions</h2>
 
-    <table>
+    <table class="main-table-petitions">
         <tr>
             <th>Id</th>
             <th>Description</th>
@@ -19,7 +21,9 @@
         <tr th:each="petitionEntity : ${petitions}">
             <td th:text="${petitionEntity.id}">Id</td>
             <td th:text="${petitionEntity.description}">Name</td>
-            <td><button><a th:href="@{/petition/} + ${petitionEntity.id}">Details</a></button></td>
+            <td>
+                <button><a th:href="@{/petition/} + ${petitionEntity.id}">Details</a></button>
+            </td>
         </tr>
 
     </table>
