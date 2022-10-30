@@ -1,7 +1,7 @@
 package com.example.petition.controller;
 
-import com.example.laba2.entity.dto.UserDto;
-import com.example.laba2.service.UserService;
+import com.example.petition.entity.dto.UserDto;
+import com.example.petition.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

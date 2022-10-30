@@ -1,7 +1,7 @@
 package com.example.petition.controller;
 
-import com.example.laba2.entity.VoteEntity;
-import com.example.laba2.service.VoteService;
+import com.example.petition.entity.VoteEntity;
+import com.example.petition.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

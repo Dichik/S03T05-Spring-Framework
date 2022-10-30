@@ -1,9 +1,9 @@
 package com.example.petition.controller;
 
-import com.example.laba2.entity.PetitionEntity;
-import com.example.laba2.entity.dto.PetitionDto;
-import com.example.laba2.exception.PetitionNotFoundException;
-import com.example.laba2.service.PetitionService;
+import com.example.petition.entity.PetitionEntity;
+import com.example.petition.entity.dto.PetitionDto;
+import com.example.petition.exception.PetitionNotFoundException;
+import com.example.petition.service.PetitionService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
