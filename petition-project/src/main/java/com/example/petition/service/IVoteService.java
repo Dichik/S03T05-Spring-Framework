@@ -9,8 +9,6 @@ public interface IVoteService {
 
     VoteEntity vote(Long userId, Long petitionId) throws VoteNotSavedException;
 
-    Long getNumberOfVotesByPetitionId(Long petitionId);
-
     List<VoteEntity> getByPetitionId(Long petitionId);
 
 }

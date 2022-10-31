@@ -30,11 +30,6 @@ public class VoteService implements IVoteService {
     }
 
     @Override
-    public Long getNumberOfVotesByPetitionId(Long petitionId) {
-        return this.voteRepository.countByPetitionId(petitionId);
-    }
-
-    @Override
     public List<VoteEntity> getByPetitionId(Long petitionId) {
         return this.voteRepository.findAllByPetitionId(petitionId);
     }

@@ -80,11 +80,13 @@ Only a single constructor may be annotated with @Autowired.
 
 ### 1. Для чого потрібен шаблон проектування MVC.
 
-
+MVC is primarily used to separate an application into three main components: Model, View, and Controller.
 
 ### 2. В чому полягають переваги використання шаблону проектування Front Controller?
 
+Front Controller - Single handler for all kinds of requests coming to the application
 
+In Progress...
 
 ### 3. Поясніть особливості використання шаблону проектування Front Controller при реалізації веб-застосунків та RESTful веб-сервісів.
 
@@ -92,11 +94,11 @@ Only a single constructor may be annotated with @Autowired.
 
 ### 4. В чому полягають відмінності методів GET та POST протоколу HTTP?
 
-
+GET - is used for getting data without making any changes, POST - is used for string data.
 
 ### 5. Що таке сервлет?
 
-
+A servlet is simply a class which responds to a particular type of network request - most commonly an HTTP request.
 
 ### 6. Якими способами передаються данні HTML-форм з клієнта на сервер? В чому полягають їх переваги і недоліки?
 
@@ -112,11 +114,17 @@ Only a single constructor may be annotated with @Autowired.
 
 ### 9. В чому полягає різниця між статичними HTML-сторінками та шаблонами сторінок Thymeleaf та JSP?
 
-
+JSP is not a template engine. It's compiled to the servlet and then the servlet is serving web content. 
+On the other hand, Thymeleaf is a template engine which takes the HTML file, parses it and then produces web content which is being served.
 
 ### 10. В чому полягає різниця між сервлетами та JSP-сторінками?
 
-
+- Servlet can accept all protocol requests, including HTTP, while JSP can only accept HTTP requests.
+- In MVC architecture, servlet works as a controller, while JSP works as a view for displaying output.
+- Servlet should be used when there is more data processing involved, whereas JSP is generally used when there is less involvement of data processing.
+- Servlets run faster than JSP, on the other hand, JSP runs slower than servlet as it takes time to compile the program and convert it into servlets.
+- You can override the service() method in servlet, but in JSP, you can’t override the service() method.
+- In Servlet, you have to implement both business logic and presentation logic in a single file. Whereas in JSP, business logic is split from presentation logic using JavaBeans.
 
 ### 11. Як виглядає життєвий цикл JSP-сторінки? Що таке трансляція та компіляція JSP-сторінок?
 
@@ -124,35 +132,44 @@ Only a single constructor may be annotated with @Autowired.
 
 ### 12. Що таке скриптлети та директивні елементи?
 
-
+The scriptlet is everything inside the <% %> tags.
+Directives are elements that relay messages to the JSP container and affect how it compiles the JSP page.
 
 ### 13. В чому полягає різниця між директивою <%@ include%> та елементом <jsp:include>?
 
-
+Resource included by include directive is loaded during jsp translation time, while resource included by include action is loaded during request time. 
+Any change on included resource will not be visible in case of include directive until jsp file compiles again.
 
 ### 14. Що таке JavaBean? Як їх використовувати у JSP-сторінках?
 
-
+A Java Bean is a standard Java class with attributes, setters, and getters to represent a specific user form on the server. 
+A JavaBean in JSP is a Java class that follows a set of guidelines.
 
 ### 15. В чому полягають переваги/недоліки використання EL та JSTL у порівнянні з такими JSP-елементами як вирази (<%=…  %>) та скриптлети (<% … %>)?
 
-
+Щоб зробити в'юшку, нам потрібно знати лише html, JSTL допомагає прибрати мультизадачність з розробника. Також куди зручніше читати код з використанням JSTL.
 
 ### 16. В чому полягають переваги/недоліки використання JSTL-елемента <c:out> у порівнянні зі звичайними EL-виразом ${…} або JSP-елементом <%=… %>?
 
-
+<c:out> tag lets you use the simpler "." notation to access properties
 
 ### 17. Який час життя атрибутів на рівнях  requestScope, sessionScope, applicationScope? Чи можуть одночасно існувати атрибути з однаковими іменами на різних рівнях?
 
 
 
+Link: https://dotnettutorials.net/lesson/jsp-scopes/
+
 ### 18. Що таке XSS-атака? Як зробити сайт стійким до таких атак?
 
+Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites.
 
+For our application, we can use `@Valid`, `@Max`, `@Min`, etc. annotations in Spring.
 
 ### 19. Поясніть різницю між термінами forward та redirect.
 
-
+The Forward method forwards a request from one servlet to another resource in a web application 
+and this resource can be another servlet, JSP page, or HTML file. The Redirect method, on the other hand, 
+redirects the request to a different application. You cannot do this with a forward method.
 
 # Лабораторна робота №4
 
