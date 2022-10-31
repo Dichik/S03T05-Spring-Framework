@@ -1,6 +1,5 @@
 package com.example.petition.service;
 
-
 import com.example.petition.entity.PetitionEntity;
 import com.example.petition.entity.dto.PetitionDto;
 import com.example.petition.exception.PetitionNotFoundException;
