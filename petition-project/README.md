@@ -153,3 +153,57 @@ Only a single constructor may be annotated with @Autowired.
 ### 19. Поясніть різницю між термінами forward та redirect.
 
 
+
+# Лабораторна робота №4
+
+## Контрольні запитання
+
+### 1. Поясніть різницю між вебзастосунками та RESTful вебсервісами.
+
+
+
+### 2. Які технології реалізації концепції сервісно-орієнтованої архітектури ви знаєте? Чим RESTful вебсервіси відрізняються від інших підходів?
+
+
+
+### 3. Поясніть особливості використання шаблону проектування Front Controller при реалізації вебзастосунків та RESTful вебсервісів.
+
+
+
+### 4. Для реалізації якої чи яких операцій CRUD (create, read, update, delete) можуть використовуватися такі методи протоколу HTTP як GET, POST, PUT, PATCH, DELETE?
+
+create - POST request
+
+read - GET request
+
+update - PUT, PATCH, POST? requests
+
+delete - DELETE request
+
+### 5. Що означають поняття «безпечний» та «ідемпотентний» метод HTTP? Чи будь який безпечний метод є ідемпотентним? Чи будь який ідемпотентний метод є безпечним?
+
+
+
+### 6. В чому полягає різниця між анотаціями @Controller та @RestController?
+
+
+
+### 7. В чому полягає різниця між анотаціями @GetMapping та @RequestMapping?
+
+`@GetMapping` - means the request with method GET. It is a class-level annotation.
+
+`@RequestMapping` - general request and we need to specify method (GET, POST, etc.). It is a method-level annotation.
+
+### 8. В яких випадках можуть знадобитися анотації @RequestParam, @PathVariable, @RequestBody?
+
+`@RequestParam` -
+`@RequestVariable` -
+`@RequestBody` -
+
+### 9. Для чого потрібен клас ResponseEntity?
+
+
+
+### 10. Як за допомогою анотації @Valid здійснювати валідацію даних, які надходять від клієнта?
+
+
