@@ -4,6 +4,7 @@ import com.example.petition.entity.VoteEntity;
 import com.example.petition.entity.dto.VoteDto;
 import com.example.petition.exception.VoteNotSavedException;
 import com.example.petition.service.VoteService;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequestMapping("/vote")
 public class VoteController {
@@ -29,6 +31,7 @@ public class VoteController {
     @RequestMapping(value = "/{id:[\\d]+}", method = RequestMethod.GET)
     public String getAllByPetitionId(@PathVariable Long id, Model model) {
         List<VoteEntity> votes = this.voteService.getByPetitionId(id);
+        log.info("Got " + votes.size() + " votes, see: " + votes);
         model.addAttribute("votes", votes);
         return "vote";
     }
