@@ -7,6 +7,9 @@ import com.example.petition.service.PetitionService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,8 +34,14 @@ public class PetitionController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getAll(Model model) {
-        List<PetitionEntity> petitions = this.petitionService.findAll();
+    public String getAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "2") int size,
+            Model model
+    ) {
+        Pageable paging = PageRequest.of(page, size);
+        Page<PetitionEntity> pagePetitions = this.petitionService.findAll(paging);
+        List<PetitionEntity> petitions = pagePetitions.getContent();
 
         log.info("List of petitions were getten. Total size: " + petitions.size());
 

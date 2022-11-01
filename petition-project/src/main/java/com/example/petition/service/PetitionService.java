@@ -7,6 +7,8 @@ import com.example.petition.repository.PetitionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +24,10 @@ public class PetitionService implements IPetitionService {
     @Override
     public List<PetitionEntity> findAll() {
         return this.petitionRepository.findAll();
+    }
+
+    public Page<PetitionEntity> findAll(Pageable paging) {
+        return this.petitionRepository.findAll(paging);
     }
 
     @Override
