@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.thymeleaf.org ">
+      xsi:schemaLocation="http://www.thymeleaf.org " lang="en">
 <head>
     <title>Cities</title>
     <meta charset="UTF-8">
@@ -26,8 +26,20 @@
                     <button><a th:href="@{/petition/} + ${petitionEntity.id}">Details</a></button>
                 </td>
             </tr>
-
         </table>
+        <div>
+            <button>
+                <button><a th:href="createPetition">Create petition</a></button>
+            </button>
+        </div>
+<!--        <footer style="font-size: large" class="panel-footer">-->
+<!--            Total Items [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]-->
+<!--            &nbsp; &nbsp; - &nbsp;-->
+<!--            <span th:each="i: ${#numbers.sequence(1, totalPetitions)}">-->
+<!--                <a th:href="@{'/petition/' + ${i}}">[[${i}]]</a>-->
+<!--                &nbsp; &nbsp;-->
+<!--            </span>-->
+<!--        </footer>-->
     </div>
     <div th:if="${petitions == null}">
         <h2>List of petitions is empty now</h2>
