@@ -43,7 +43,7 @@ public class PetitionController {
         Page<PetitionEntity> pagePetitions = this.petitionService.findAll(paging);
         List<PetitionEntity> petitions = pagePetitions.getContent();
 
-        log.info("List of petitions were getten. Total size: " + petitions.size());
+        log.info("List of petitions were gotten. Total size: " + petitions.size());
 
         model.addAttribute("petitions", petitions);
         return "petition";

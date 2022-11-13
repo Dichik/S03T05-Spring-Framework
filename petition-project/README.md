@@ -175,17 +175,17 @@ redirects the request to a different application. You cannot do this with a forw
 
 ## Контрольні запитання
 
-### 1. Поясніть різницю між вебзастосунками та RESTful вебсервісами.
+### 1. Поясніть різницю між вебзастосунками та REST-ful вебсервісами.
 
+Web application: HTML delivered from server. REST-ful apps use the HTTP protocol independent of presentation, and could equally support mobile, desktop, web, etc. 
 
+### 2. Які технології реалізації концепції сервісно-орієнтованої архітектури ви знаєте? Чим REST-ful вебсервіси відрізняються від інших підходів?
 
-### 2. Які технології реалізації концепції сервісно-орієнтованої архітектури ви знаєте? Чим RESTful вебсервіси відрізняються від інших підходів?
+...
 
+### 3. Поясніть особливості використання шаблону проектування Front Controller при реалізації вебзастосунків та REST-ful вебсервісів.
 
-
-### 3. Поясніть особливості використання шаблону проектування Front Controller при реалізації вебзастосунків та RESTful вебсервісів.
-
-
+Single handler for all kinds of requests coming to the application
 
 ### 4. Для реалізації якої чи яких операцій CRUD (create, read, update, delete) можуть використовуватися такі методи протоколу HTTP як GET, POST, PUT, PATCH, DELETE?
 
@@ -193,17 +193,19 @@ create - POST request
 
 read - GET request
 
-update - PUT, PATCH, POST? requests
+update - PUT, PATCH requests
 
 delete - DELETE request
 
 ### 5. Що означають поняття «безпечний» та «ідемпотентний» метод HTTP? Чи будь який безпечний метод є ідемпотентним? Чи будь який ідемпотентний метод є безпечним?
 
+"безпечний" - read-only (GET), не повинен впливати на серверні дані. 
 
+"ідемпотентний" - when making multiple identical requests has the same effect as making a single request.
 
 ### 6. В чому полягає різниця між анотаціями @Controller та @RestController?
 
-
+@RestController = @Controller + @ResponseBody
 
 ### 7. В чому полягає різниця між анотаціями @GetMapping та @RequestMapping?
 
@@ -213,14 +215,16 @@ delete - DELETE request
 
 ### 8. В яких випадках можуть знадобитися анотації @RequestParam, @PathVariable, @RequestBody?
 
-`@RequestParam` -
-`@RequestVariable` -
-`@RequestBody` -
+`@RequestParam` - params for request (required or not).
+`@PathVariable` - identifies the pattern that is used in the URI for the incoming request.
+`@RequestBody` - body to get from request (update, create).
 
 ### 9. Для чого потрібен клас ResponseEntity?
 
-
+ResponseEntity represents the entire HTTP response. You have more control over response by including body, headers and status code.
 
 ### 10. Як за допомогою анотації @Valid здійснювати валідацію даних, які надходять від клієнта?
 
-
+@Valid annotation for method level validation. The @Valid annotation ensures the validation of the whole object.
+Importantly, it performs the validation of the whole object graph.
+We should add this annotation before the object to validate.
