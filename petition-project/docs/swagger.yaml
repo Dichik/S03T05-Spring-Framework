@@ -1,0 +1,159 @@
+swagger: "2.0"
+info:
+  description: "This is a sample EasyMeals server."
+  version: "1.0.0"
+  title: "Swagger EasyMeals"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "omeluan.dima@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8080"
+basePath: "/api/v1"
+schemes:
+  - "http"
+paths:
+  /petitions:
+    get:
+      tags:
+        - "petitions"
+      summary: "Find all petitions"
+      description: "Returns list of all petitions"
+      operationId: "getAll"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Petition"
+    post:
+      tags:
+        - "petitions"
+      summary: "Create a petition"
+      description: "Should create a petition."
+      operationId: "create"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "body"
+          in: "body"
+          description: "Petition object that needs to be added to the database"
+          required: true
+          schema:
+            $ref: "#/definitions/Petition"
+      responses:
+        "201":
+          description: "Successful operation"
+
+  /petitions/{id}:
+    get:
+      tags:
+        - "petitions"
+      summary: "Find petition by id"
+      description: "Returns a single petition"
+      operationId: "getById"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "id of user to return"
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Petition"
+    put:
+      tags:
+        - "petitions"
+      summary: "Update petition info by id"
+      description: "Operation to update petition data by id"
+      operationId: "update"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "id of petition to update"
+          required: true
+          type: "integer"
+        - name: "body"
+          in: "body"
+          description: "Updated petition object"
+          required: true
+          schema:
+            $ref: "#/definitions/Petition"
+      responses:
+        "400":
+          description: "Invalid petition applied"
+        "401":
+          description: "Petition not found"
+        "201":
+          description: "Petition was successfully created"
+    delete:
+      tags:
+        - "petitions"
+      summary: "Delete petition by id"
+      description: "Here we delete the petition by id"
+      operationId: "delete"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "The id that needs to be deleted"
+          required: true
+          type: "integer"
+      responses:
+        "200":
+          description: "Deleted successfully"
+        "400":
+          description: "Invalid petition applied"
+        "401":
+          description: "Petition not found"
+
+definitions:
+  Petition:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      description:
+        type: "string"
+
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      firstName:
+        type: "string"
+      secondName:
+        type: "string"
+      email:
+        type: "string"
+
+  Vote:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      user:
+        type: "object"
+        $ref: "#/definitions/User"
+      petition:
+        type: "object"
+        $ref: "#/definitions/Petition"
+      votedAt:
+        type: "object"
