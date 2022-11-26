@@ -86,7 +86,7 @@ public class PetitionController {
                 .map(petitionEntity -> {
                     PetitionDto petition = this.modelMapper.map(petitionEntity, PetitionDto.class);
                     return ResponseEntity.ok(petition);
-                }).orElse(ResponseEntity.status(HttpStatus.CONFLICT).build());
+                }).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
 }

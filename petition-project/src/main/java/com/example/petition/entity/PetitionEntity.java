@@ -10,12 +10,12 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "petitions")
 public class PetitionEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    private String title;
 
     private String description;
 

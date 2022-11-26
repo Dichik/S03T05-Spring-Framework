@@ -10,13 +10,17 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
 public class UserEntity {
     // TODO only registered users can vote (easy registration maybe with mail confirmation)
-    // TODO confirmation by clicing url -> interesting to design that???
+    // TODO confirmation by clicking url -> interesting to design that???
     // TODO Spring Security is ok for that? would be a good practice to test it on an easy application
-    @Id @Column(unique = true)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    /**
+     * GenerationType.SEQUENCE
+     *      Indicates that the persistence provider must assign
+     *      primary keys for the entity using a database sequence.
+     */
+    @Id
     private Long id;
 
     private String email;

@@ -12,24 +12,16 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "votes")
 public class VoteEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UserEntity user;
+    private Long userId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "petition_id", referencedColumnName = "id")
-    private PetitionEntity petition;
-
-    @Column(insertable = false, updatable = false)
-    @LastModifiedDate
-    private Instant votedAt;
+    private Long petitionId;
+//
+//    @LastModifiedDate
+//    private Instant votedAt;
 
 }
