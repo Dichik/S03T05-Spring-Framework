@@ -20,28 +20,48 @@ public class UserDao implements Dao<User> {
 
     @Override
     public Long create(User user) {
-
-        return 0L;
+        return (long) this.jdbcTemplate.update(
+                "insert into users(email, firstName, secondName) values (?, ?, ?)",
+                user.getEmail(), user.getFirstName(), user.getSecondName());
     }
 
     @Override
     public Optional<User> getById(Long id) {
-        return Optional.empty();
+        return jdbcTemplate.queryForObject(
+                "select * from users where id = ?",
+                new Object[]{id},
+                (rs, rowNum) ->
+                        Optional.of(new User.UserBuilder(rs.getString("email"))
+                                .setId(rs.getLong("id"))
+                                .setFirstName(rs.getString("firstName"))
+                                .setSecondName(rs.getString("secondName"))
+                                .build())
+        );
     }
 
     @Override
     public void update(User user) {
-
+        jdbcTemplate.update(
+                "update users set email = ? where id = ?",
+                user.getEmail(), user.getId());
     }
 
     @Override
-    public void deleteById(Long id) {
-
+    public Long deleteById(Long id) {
+        return (long) this.jdbcTemplate.update("delete users where id=?", id);
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+        return this.jdbcTemplate.query(
+                "select * from users",
+                (rs, rowNum) ->
+                        new User.UserBuilder(rs.getString("email"))
+                                .setId(rs.getLong("id"))
+                                .setFirstName(rs.getString("firstName"))
+                                .setSecondName(rs.getString("secondName"))
+                                .build()
+        );
     }
 
 }

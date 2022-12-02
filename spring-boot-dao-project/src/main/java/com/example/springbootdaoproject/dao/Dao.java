@@ -11,7 +11,7 @@ public interface Dao<T> {
 
     void update(T t);
 
-    void deleteById(Long id);
+    Long deleteById(Long id);
 
     List<T> getAll();
 
