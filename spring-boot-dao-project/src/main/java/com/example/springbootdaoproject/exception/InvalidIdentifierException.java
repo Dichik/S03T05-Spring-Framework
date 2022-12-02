@@ -6,4 +6,8 @@ public class InvalidIdentifierException extends RuntimeException {
         super("Invalid id: " + id);
     }
 
+    public InvalidIdentifierException(String key) {
+        super("Inalid key: " + key);
+    }
+
 }

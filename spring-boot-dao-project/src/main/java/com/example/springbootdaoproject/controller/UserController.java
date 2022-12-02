@@ -41,6 +41,11 @@ public class UserController {
         return this.userService.getById(id).orElseThrow(() -> new InvalidIdentifierException(id));
     }
 
+    @GetMapping("/{email:\\s+}")
+    public User getByEmail(@PathVariable String email) {
+        return this.userService.getByEmail(email).orElseThrow(() -> new InvalidIdentifierException(email));
+    }
+
     @PostMapping
     public Long create(@RequestBody @Valid UserDto userDto) {
         return this.userService.create(this.modelMapper.map(userDto, User.class));

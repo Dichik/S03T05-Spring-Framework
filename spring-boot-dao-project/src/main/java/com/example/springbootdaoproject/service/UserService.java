@@ -31,6 +31,10 @@ public class UserService {
         return this.userDao.getById(id);
     }
 
+    public Optional<User> getByEmail(String email) {
+        return this.userDao.getByEmail(email);
+    }
+
     public Long create(User user) {
         return this.userDao.create(user);
     }

@@ -39,6 +39,19 @@ public class UserDao implements Dao<User> {
         );
     }
 
+    public Optional<User> getByEmail(String email) {
+        return jdbcTemplate.queryForObject(
+                "select * from users where email = ?",
+                new Object[]{email},
+                (rs, rowNum) ->
+                        Optional.of(new User.UserBuilder(rs.getString("email"))
+                                .setId(rs.getLong("id"))
+                                .setFirstName(rs.getString("firstName"))
+                                .setSecondName(rs.getString("secondName"))
+                                .build())
+        );
+    }
+
     @Override
     public void update(User user) {
         jdbcTemplate.update(
