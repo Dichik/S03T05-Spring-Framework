@@ -5,9 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,15 +20,7 @@ public class UserDao implements Dao<User> {
 
     @Override
     public Long create(User user) {
-//        String sql = "INSERT INTO users() VALUES ()";
-//        try (
-//                Connection connection = dataSource.getConnection();
-//                PreparedStatement ps = connection.prepareStatement(sql)
-//        ) {
-//
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+
         return 0L;
     }
 
