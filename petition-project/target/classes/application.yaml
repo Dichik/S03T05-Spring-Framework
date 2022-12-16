@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+spring:
+  sql:
+    init:
+      mode: always
+  datasource:
+    url: jdbc:postgresql://localhost:5432/laba2
+    username: admin
+    password: admin
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+#      ddl-auto: update
+       ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

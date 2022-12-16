@@ -22,7 +22,7 @@ public class UserService implements IUserService {
 
     @Override
     public List<UserEntity> getUsers() {
-        return this.userRepository.findAll();
+        return (List<UserEntity>) this.userRepository.findAll();
     }
 
 }

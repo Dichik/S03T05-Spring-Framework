@@ -1,0 +1,64 @@
+.petitions-list {
+    width: 300px;
+    height: 100px;
+    top: 508px;
+
+    background: #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: white;
+
+    outline: none;
+    margin: 0 auto;
+    justify-content: center;
+    font-family: "Arial";
+}
+
+a:link {
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.main-header-petitions {
+    display: flex;
+    text-align: center;
+    margin-top: 100px;
+    font-size: 30px;
+    justify-content: center;
+
+    font-family: "Arial";
+}
+
+
+.main-table-petitions {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    padding: 20px;
+    font-size: 25px;
+
+    font-family: "Arial";
+}
+
+table {
+    border: 1px solid;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: rgba(214, 214, 214, 1);
+}
