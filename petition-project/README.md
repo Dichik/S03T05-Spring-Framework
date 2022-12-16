@@ -228,3 +228,30 @@ ResponseEntity represents the entire HTTP response. You have more control over r
 @Valid annotation for method level validation. The @Valid annotation ensures the validation of the whole object.
 Importantly, it performs the validation of the whole object graph.
 We should add this annotation before the object to validate.
+
+
+# Лабораторна робота №6
+
+### 1. Що таке ORM?
+
+
+
+### 2. В чому полягає різниця між JPA та Hibernate?
+
+
+
+### 3. Поясніть призначення кожного методу з інтерфейсу CrudRepository.
+
+
+
+### 4. Яким вимогам має відповідати @Entity-клас?
+
+
+
+### 5. Які є типи відношень між сутностями у JPA?
+
+
+
+### 6. Для чого потрібні DTO? Чому замість них не завжди можна використовувати @Entity об’єкти?
+
+
