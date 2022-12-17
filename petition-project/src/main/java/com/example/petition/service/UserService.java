@@ -3,7 +3,6 @@ package com.example.petition.service;
 import com.example.petition.entity.UserEntity;
 import com.example.petition.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

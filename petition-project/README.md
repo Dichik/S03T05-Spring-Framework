@@ -234,23 +234,63 @@ We should add this annotation before the object to validate.
 
 ### 1. Що таке ORM?
 
-
+Object-Relational Mapping or ORM is a technique for converting data between Java objects and relational databases. 
+ORM converts data between two incompatible type systems (Java and MySQL), such that each model class becomes a table in our database and each instance a row of the table.
 
 ### 2. В чому полягає різниця між JPA та Hibernate?
 
 
+#### What is JPA?
+
+A JPA (Java Persistence API) is a specification of Java which is used to access, manage, and persist data between Java object and relational database. 
+It is considered as a standard approach for Object Relational Mapping.
+
+JPA can be seen as a bridge between object-oriented domain models and relational database systems. 
+Being a specification, JPA doesn't perform any operation by itself. Thus, it requires implementation. 
+So, ORM tools like Hibernate, TopLink, and iBatis implements JPA specifications for data persistence.
+
+#### What is Hibernate?
+
+A Hibernate is a Java framework which is used to store the Java objects in the relational database system. 
+It is an open-source, lightweight, ORM (Object Relational Mapping) tool.
+
+Hibernate is an implementation of JPA. So, it follows the common standards provided by the JPA.
 
 ### 3. Поясніть призначення кожного методу з інтерфейсу CrudRepository.
 
-
+- count() - Returns the number of entities available.
+- delete(T entity) - Deletes a given entity.
+- deleteAll() - Deletes all entities managed by the repository.
+- deleteAll(Iterable<? extends T> entities) - Deletes the given entities.
+- deleteAllById(Iterable<? extends ID> ids) - Deletes all instances of the type T with the given IDs.
+- deleteById(ID id) Deletes the entity with the given id.
+- existsById(ID id) - Returns whether an entity with the given id exists.
+- findAll() - Returns all instances of the type.
+- findAllById(Iterable<ID> ids) - Returns all instances of the type T with the given IDs.
+- findById(ID id) - Retrieves an entity by its id.
+- save(S entity) - Saves a given entity.
+- saveAll(Iterable<S> entities) - Saves all given entities.
 
 ### 4. Яким вимогам має відповідати @Entity-клас?
 
+- The class must be annotated with the javax.persistence.Entity annotation.
 
+- The class must have a public or protected, no-argument constructor. The class may have other constructors.
+
+- The class must not be declared final. No methods or persistent instance variables must be declared final.
+
+- If an entity instance is passed by value as a detached object, such as through a session bean’s remote business interface, the class must implement the Serializable interface.
+
+- Entities may extend both entity and non-entity classes, and non-entity classes may extend entity classes.
+
+- Persistent instance variables must be declared private, protected, or package-private and can be accessed directly only by the entity class’s methods. Clients must access the entity’s state through accessor or business methods.
 
 ### 5. Які є типи відношень між сутностями у JPA?
 
-
+- @ManyToOne Relation
+- @OneToMany Relation
+- @OneToOne Relation
+- @ManyToMany Relation
 
 ### 6. Для чого потрібні DTO? Чому замість них не завжди можна використовувати @Entity об’єкти?
 
