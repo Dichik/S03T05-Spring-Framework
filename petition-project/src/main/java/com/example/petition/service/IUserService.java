@@ -12,4 +12,6 @@ public interface IUserService {
 
     List<UserEntity> getUsers();
 
+    List<UserEntity> getUsersOrderedByEmail();
+
 }

@@ -15,4 +15,6 @@ public interface UserRepository extends CrudRepository<UserEntity, Long> {
     @Query("SELECT u FROM users u WHERE u.first_name=?1 AND u.second_name=?2")
     List<UserEntity> findByFirstNameAndSecondName(String firstName, String secondName);
 
+    List<UserEntity> findAllOrderedByEmail();
+
 }

@@ -24,4 +24,9 @@ public class UserService implements IUserService {
         return (List<UserEntity>) this.userRepository.findAll();
     }
 
+    @Override
+    public List<UserEntity> getUsersOrderedByEmail() {
+        return this.userRepository.findAllOrderedByEmail();
+    }
+
 }

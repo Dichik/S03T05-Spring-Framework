@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,6 +40,17 @@ public class UserController {
         return this.userService.getUsers().stream()
                 .map(user -> this.modelMapper.map(user, UserDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping
+    public List<UserDto> getUsersOrderedByEmail(@RequestParam Boolean orderByEmail) {
+        if (orderByEmail) {
+            return this.userService.getUsersOrderedByEmail().stream()
+                    .map(user -> this.modelMapper.map(user, UserDto.class))
+                    .collect(Collectors.toList());
+        } else {
+            return getUsers();
+        }
     }
 
 }

@@ -19,6 +19,8 @@ import java.util.Optional;
 public class PetitionService implements IPetitionService {
 
     private ModelMapper modelMapper;
+
+    @Autowired
     private PetitionRepository petitionRepository;
 
     @Override
@@ -63,11 +65,6 @@ public class PetitionService implements IPetitionService {
     @Autowired
     public void setModelMapper(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
-    }
-
-    @Autowired
-    public void setPetitionRepository(PetitionRepository petitionRepository) {
-        this.petitionRepository = petitionRepository;
     }
 
 }

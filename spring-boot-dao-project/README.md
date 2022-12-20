@@ -3,15 +3,19 @@
 ## curl scripts
 
 #### Get users
+
 ```curl http://localhost:8080/users```
 
 #### Create user
+
 ```curl -X POST -H "Content-Type: application/json" -d '{"email": "test@email.com", "firstName": "test", "secondName": "test"}' http://localhost:8080/users```
 
 #### Delete user
+
 ```curl -X DELETE http://localhost:8080/users/1```
 
 #### Update user
+
 ```curl -X PUT -H "Content-Type: application/json" -d '{"firstName": "test2", "secondName": "test2"}' http://localhost:8080/users/2```
 
 ## Questions:
@@ -45,16 +49,16 @@ updates the instructions and procedure calls, “catches” the exceptions, and 
 |--------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
 | executeQuery() method used to retrieve some data from database.                                  | executeUpdate() method used for update or modify database.                                                      | execute() use for any SQL statements.                                               |
 | It returns an object of the class. ```ResultSet executeQuery (String sql) throws SQLException``` | It returns an integer value. ```int executeUpdate(String sql) throws SQLException```                            | It returns a boolean value. ```int executeUpdate(String sql) throws SQLException``` |
-| This method is normally used to execute SELECT queries.                                          | This method Is used to execute non SELECT queries. **DML** as INSERT, DELETE, UPDATE or **DDL** as CREATE. DROP | This method can be used to execute any type of SQL statement.                       |
+| This method is normally used to execute SELECT queries.                                          | This method Is used to execute non SELECT queries. **
+DML** as INSERT, DELETE, UPDATE or **
+DDL** as CREATE. DROP | This method can be used to execute any type of SQL statement.                       |
 
 ### 4. Чим відрізняються інтерфейси RowMapper<T> та ResultSetExtractor<T>?
 
-
-
 ### 5. Для чого потрібен інтерфейс KeyHolder?
 
-Interface for retrieving keys, typically used for auto-generated keys as potentially returned by JDBC insert statements. 
-Implementations of this interface can hold any number of keys. 
+Interface for retrieving keys, typically used for auto-generated keys as potentially returned by JDBC insert statements.
+Implementations of this interface can hold any number of keys.
 In the general case, the keys are returned as a List containing one Map for each row of keys.
 
 ### 6. Як працює декларативне керування транзакціями у Spring Framework?
