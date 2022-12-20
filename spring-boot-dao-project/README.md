@@ -1,5 +1,19 @@
 # Assignment 5. JdbcTemplate
 
+## curl scripts
+
+#### Get users
+curl http://localhost:8080/users
+
+#### Create user
+curl -X POST -H "Content-Type: application/json" -d '{"email": "test@email.com", "firstName": "test", "secondName": "test"}' http://localhost:8080/users
+
+#### Delete user
+curl -X DELETE http://localhost:8080/users/1
+
+#### Update user
+curl -X PUT -H "Content-Type: application/json" -d '{"firstName": "test2", "secondName": "test2"}' http://localhost:8080/users/2
+
 ## Questions:
 
 ### 1. Поясніть різницю між JDBC та JdbcTemplate.

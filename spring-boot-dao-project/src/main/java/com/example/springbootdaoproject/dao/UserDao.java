@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,12 +32,7 @@ public class UserDao implements Dao<User> {
         return jdbcTemplate.queryForObject(
                 "select * from users where id = ?",
                 new Object[]{id},
-                (rs, rowNum) ->
-                        Optional.of(new User.UserBuilder(rs.getString("email"))
-                                .setId(rs.getLong("id"))
-                                .setFirstName(rs.getString("firstName"))
-                                .setSecondName(rs.getString("secondName"))
-                                .build())
+                (rs, rowNum) -> Optional.of(createUserByResultSet(rs))
         );
     }
 
@@ -43,12 +40,7 @@ public class UserDao implements Dao<User> {
         return jdbcTemplate.queryForObject(
                 "select * from users where email = ?",
                 new Object[]{email},
-                (rs, rowNum) ->
-                        Optional.of(new User.UserBuilder(rs.getString("email"))
-                                .setId(rs.getLong("id"))
-                                .setFirstName(rs.getString("firstName"))
-                                .setSecondName(rs.getString("secondName"))
-                                .build())
+                (rs, rowNum) -> Optional.of(createUserByResultSet(rs))
         );
     }
 
@@ -61,19 +53,23 @@ public class UserDao implements Dao<User> {
 
     @Override
     public Long deleteById(Long id) {
-        return (long) this.jdbcTemplate.update("delete users where id=?", id);
+        return (long) this.jdbcTemplate.update("delete from users where id=?", id);
     }
 
     @Override
     public List<User> getAll() {
         return this.jdbcTemplate.query(
                 "select * from users",
-                (rs, rowNum) ->
-                        new User.UserBuilder(rs.getString("email"))
-                                .setId(rs.getLong("id"))
-                                .setFirstName(rs.getString("firstName"))
-                                .setSecondName(rs.getString("secondName"))
-                                .build()
+                (rs, rowNum) -> createUserByResultSet(rs)
+        );
+    }
+
+    private User createUserByResultSet(ResultSet rs) throws SQLException {
+        return new User(
+                rs.getLong("id"),
+                rs.getString("email"),
+                rs.getString("firstName"),
+                rs.getString("secondName")
         );
     }
 

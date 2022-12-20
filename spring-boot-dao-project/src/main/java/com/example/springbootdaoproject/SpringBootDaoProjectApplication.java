@@ -27,11 +27,12 @@ public class SpringBootDaoProjectApplication implements CommandLineRunner {
     }
 
     void runJDBC() {
-        this.jdbcTemplate.execute("CREATE TABLE users(" +
+        this.jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS users(" +
                 "id SERIAL, " +
                 "email VARCHAR(255)," +
                 "firstName VARCHAR(255)," +
                 "secondName VARCHAR(255))");
+        this.jdbcTemplate.execute("INSERT INTO users(email, firstName, secondName) VALUES ('test@email.com', 'Ostap','Petrenko')");
     }
 
 }

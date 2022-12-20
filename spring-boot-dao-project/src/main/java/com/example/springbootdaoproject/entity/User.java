@@ -7,11 +7,15 @@ public class User {
     private String firstName;
     private String secondName;
 
-    private User(UserBuilder builder) {
-        this.id = builder.id;
-        this.email = builder.email;
-        this.firstName = builder.firstName;
-        this.secondName = builder.secondName;
+    public User() {
+
+    }
+
+    public User(Long id, String email, String firstName, String secondName) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.secondName = secondName;
     }
 
     public Long getId() {
@@ -26,44 +30,23 @@ public class User {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getSecondName() {
         return secondName;
     }
 
-    public static class UserBuilder {
-
-        private Long id;
-        private String email;
-        private String firstName;
-        private String secondName;
-
-        public UserBuilder(String email) {
-            this.email = email;
-        }
-
-        public UserBuilder setId(Long id) {
-            this.id = id;
-            return this;
-        }
-
-        public UserBuilder setFirstName(String firstName) {
-            this.firstName = firstName;
-            return this;
-        }
-
-        public UserBuilder setSecondName(String secondName) {
-            this.secondName = secondName;
-            return this;
-        }
-
-        public User build() {
-            return new User(this);
-        }
-
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
-
 }
